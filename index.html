@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicaury Diaz | Ingeniera en Sistemas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        :root {
+            --pink-pastel: #f8c8dc;
+            --dark-blue: #1e3a5f;
+            --gray: #8e8e93;
+            --light-gray: #f5f5f7;
+            --black: #000000;
+            --white: #ffffff;
+        }
+
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--pink-pastel);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--dark-blue);
+            color: var(--white);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--pink-pastel);
+            color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-pink {
+            background-color: var(--pink-pastel);
+            color: var(--dark-blue);
+        }
+
+        .btn-pink:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--dark-blue), var(--pink-pastel));
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        
+        header {
+            background: linear-gradient(135deg, var(--dark-blue), #2c5282);
+            color: var(--white);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: var(--pink-pastel);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        
+        .hero {
+            background: linear-gradient(135deg, var(--dark-blue), #2c5282);
+            color: var(--white);
+            text-align: center;
+            padding: 150px 0 100px;
+            margin-top: 70px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--white);
+        }
+
+        .hero .btn {
+            background-color: var(--pink-pastel);
+            color: var(--dark-blue);
+        }
+
+        .hero .btn:hover {
+            background-color: var(--white);
+            color: var(--dark-blue);
+        }
+
+        
+        .about {
+            background-color: var(--light-gray);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--pink-pastel);
+            overflow: hidden;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .info-item {
+            padding: 12px;
+            background-color: var(--white);
+            border-radius: 8px;
+            border-left: 4px solid var(--pink-pastel);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+        }
+
+        .info-item strong {
+            color: var(--dark-blue);
+        }
+
+       
+        .projects {
+            background-color: var(--white);
+        }
+
+        .projects-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+            justify-content: center;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: var(--pink-pastel);
+        }
+
+        .project-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 58, 95, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay .btn {
+            background: var(--pink-pastel);
+            color: var(--dark-blue);
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 12px;
+            color: var(--dark-blue);
+            text-align: center;
+        }
+
+        .project-info p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+            justify-content: center;
+        }
+
+        .project-tag {
+            background-color: var(--pink-pastel);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark-blue);
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .project-tag:hover {
+            transform: scale(1.1);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+       
+        .aspirations {
+            background-color: var(--light-gray);
+        }
+
+        .aspirations-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .aspirations-list {
+            margin-top: 30px;
+            list-style: none;
+        }
+
+        .aspirations-list li {
+            margin-bottom: 15px;
+            padding: 15px 15px 15px 40px;
+            position: relative;
+            background-color: var(--white);
+            border-radius: 8px;
+            border-left: 4px solid var(--pink-pastel);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .aspirations-list li:hover {
+            transform: translateX(10px);
+        }
+
+        .aspirations-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 15px;
+            color: var(--dark-blue);
+            font-weight: bold;
+        }
+
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark-blue), #2c5282);
+            color: var(--white);
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--pink-pastel);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .social-link {
+            color: var(--white);
+            font-size: 1.6rem;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            color: var(--pink-pastel);
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .copyright {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: var(--pink-pastel);
+        }
+
+        
+        .accent-pink {
+            color: var(--pink-pastel);
+        }
+
+        .accent-blue {
+            color: var(--dark-blue);
+        }
+
+       
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-blue);
+        }
+
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--dark-blue), #2c5282);
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 12px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            
+            .social-links {
+                gap: 20px;
+            }
+            
+            .social-links a {
+                font-size: 1.4rem;
+            }
+
+            .project-actions {
+                flex-direction: column;
+            }
+        }
+
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Nicaury<span class="accent-pink">Diaz</span></div>
+                <div class="menu-toggle">☰</div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#sobre-mi">Sobre Mí</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#aspiraciones">Aspiraciones</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    
+    <section id="inicio" class="hero">
+        <div class="container fade-in">
+            <h1>Ingeniera en Sistemas <span class="accent-pink">(En proceso)</span></h1>
+            <p>Explora mi portafolio para conocer mis proyectos, habilidades y aspiraciones profesionales en el mundo de la Ingeniería en Sistemas.</p>
+            <a href="#proyectos" class="btn pulse">Ver Mis Proyectos</a>
+        </div>
+    </section>
+
+   
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>Soy una estudiante de Ingeniería en Sistemas de la universidad O&M, apasionada por la programación, el desarrollo de aplicaciones y el fascinante mundo de la ciberseguridad. Me caracterizo por ser una persona curiosa, disciplinada y con un fuerte compromiso hacia el aprendizaje continuo, siempre buscando mejorar mis habilidades técnicas y explorar nuevas tecnologías.</p>
+
+                    <p>Además, cuento con formación como técnica gastrónoma y auxiliar farmacéutica, lo que me ha permitido desarrollar capacidades como la atención al detalle, la organización, el pensamiento crítico y el trabajo en equipo. También poseo un sólido dominio del paquete de oficina, lo que me facilita la gestión eficiente de documentos, análisis de datos y presentaciones.</p>
+
+                    <p>En mi tiempo libre disfruto actividades que estimulan la creatividad y la concentración, como la lectura, la costura, la creación de pulseras de macramé y diversas manualidades, las cuales reflejan mi gusto por el arte, la precisión y la innovación.</p>
+
+                    <p>Mi objetivo es seguir creciendo profesionalmente, combinando mis conocimientos técnicos con mi creatividad para aportar soluciones efectivas, seguras y funcionales en el ámbito tecnológico.</p>
+                       
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Nombre:</strong> Nicaury Carolina Diaz Amador 
+                        </div>
+                        <div class="info-item">
+                            <strong>Matrícula:</strong> 23-SISN-2-028
+                        </div>
+                        <div class="info-item">
+                            <strong>Email:</strong> dnicaury81@gmail.com
+                        </div>
+                        <div class="info-item">
+                            <strong>Celular:</strong> 809-406-2188
+                        </div>
+                        <div class="info-item">
+                            <strong>Ubicación:</strong> La Romana, República Dominicana 
+                        </div>
+                    </div>
+                    
+                    <p>Me especializo en el diseño y creación de aplicaciones, combinando lógica, creatividad y buenas prácticas de programación. Siempre busco aprender nuevas tecnologías y mejorar mis habilidades.</p>
+                    
+                    <a href="Nicaury Diaz Amador .pdf" class="btn btn-pink">Descargar CV</a>
+                </div>
+                <div class="about-image">
+                    <div class="profile-image">
+                        <img src="/imagen/nicaury.jpg" alt="Foto de Nicaury Carolina Diaz Amador" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, var(--dark-blue), var(--pink-pastel)); color: white; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                            <i class="fas fa-user" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <div>Foto de Perfil</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mis Proyectos</h2>
+            <div class="projects-container">
+                <div class="projects-grid">
+                   
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <img src="/imagen/cyberconnect.png" alt="Blog Cyberconnect" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, var(--dark-blue), var(--pink-pastel)); color: white; display: flex; align-items: center; justify-content: center;">
+                                Blog Cyberconnect
+                            </div>
+                            <div class="project-overlay">
+                                <a href="https://sites.google.com/view/cyberconnect-/la-infraestructura-invisible-lo-que-hace-posible-todo" class="btn" target="_blank">Ver Sitio Web</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Cyberconnect</h3>
+                            <p>Cyberconnect es un blog dinámico y divertido inspirado para un público joven que busca obtener mas conocimientos sobre la tecnología y servicios de Internet. Toca temas interesantes como la infraestructura invisible: que lo hace todo posible, la nueva generación de conectividad, las plataformas y modelos de servicios de Internet, que dominan el mundo, también no se habla de la interface del futuro, y como interactuaremos con ellas.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Blog</span>
+                                <span class="project-tag">Tecnología</span>
+                                <span class="project-tag">Educación</span>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn btn-pink" onclick="openModal('modal1')">Ver Detalles</button>
+                                <a href="https://sites.google.com/view/cyberconnect-/la-infraestructura-invisible-lo-que-hace-posible-todo" class="btn" target="_blank">Visitar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="aspiraciones" class="aspirations">
+        <div class="container">
+            <h2 class="section-title">Aspiraciones Profesionales</h2>
+            <div class="aspirations-content fade-in">
+                <p>Mi objetivo es desarrollarme como una profesional integral en el campo de la tecnología, contribuyendo a proyectos innovadores que tengan un impacto positivo en la sociedad.</p>
+                
+                <ul class="aspirations-list">
+                    <li>Especializarme en desarrollo full stack con tecnologías modernas</li>
+                    <li>Contribuir a proyectos de código abierto y la comunidad de desarrolladores</li>
+                    <li>Adquirir experiencia en arquitectura de software y sistemas escalables</li>
+                    <li>Liderar equipos de desarrollo en proyectos de alta complejidad</li>
+                    <li>Mantener un aprendizaje continuo sobre nuevas tecnologías y metodologías</li>
+                    <li>Trabajar en una empresa tecnológica innovadora con impacto global</li>
+                </ul>
+                
+                <p>Estoy comprometida con mi crecimiento profesional y busco oportunidades que me permitan desarrollar mis habilidades mientras contribuyo con soluciones tecnológicas de valor.</p>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#contacto" class="btn">Contáctame</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Nicaury Diaz</div>
+                <p>Explora, Aprende y Crece conmigo en este viaje de desarrollo profesional.</p>
+                <div class="social-links">
+                    <a href="https://github.com" class="social-link" aria-label="GitHub" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" class="social-link" aria-label="LinkedIn" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com" class="social-link" aria-label="Twitter" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com" class="social-link" aria-label="Instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <p class="copyright">&copy; 2025 Nicaury Carolina Diaz Amador. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+   
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+            <h3>Cyberconnect - Blog Tecnológico</h3>
+            <p><strong>Descripción:</strong> Blog educativo dirigido a jóvenes interesados en tecnología, Internet y tendencias digitales.</p>
+            <p><strong>Tecnologías utilizadas:</strong> Google Sites, HTML, CSS, JavaScript</p>
+            <p><strong>Características:</strong></p>
+            <ul>
+                <li>Artículos sobre infraestructura de Internet</li>
+                <li>Tutoriales de tecnología</li>
+                <li>Noticias sobre tendencias digitales</li>
+                <li>Diseño responsive y moderno</li>
+            </ul>
+            <a href="https://sites.google.com/view/cyberconnect-/la-infraestructura-invisible-lo-que-hace-posible-todo" class="btn btn-pink" target="_blank">Visitar Sitio Web</a>
+        </div>
+    </div>
+
+    <script>
+       
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('nav ul').classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+       
+        document.querySelectorAll('.about-content, .project-card, .aspirations-content').forEach(el => {
+            observer.observe(el);
+        });
+
+        
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
